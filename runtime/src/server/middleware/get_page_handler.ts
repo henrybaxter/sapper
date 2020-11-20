@@ -117,6 +117,7 @@ export function get_page_handler(
 		let preload_error: { statusCode: number, message: Error | string };
 
 		const preload_context = {
+			cookies: parse(req.headers.cookie || ''),
 			redirect: (statusCode: number, location: string) => {
 				if (redirect && (redirect.statusCode !== statusCode || redirect.location !== location)) {
 					throw new Error('Conflicting redirects');
